@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Christmas Wishlist 🎄</title>
+  <meta name="description" content="See everyone's Christmas wishlist and add your own.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Mountains+of+Christmas:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="snow" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span>🎄</span> Christmas Wishlist</a>
+    <nav><a class="nav-link" href="add.html">🎁 Add My Wishlist</a></nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">✨ The Christmas list is open</p>
+      <h1>What’s on<br>everyone’s list?</h1>
+      <p class="hero-copy">Make a list, share the magic, and find out what everyone wants this Christmas.</p>
+      <a class="button primary" href="add.html">🎁 Add My Wishlist</a>
+    </section>
+
+    <section class="stats" aria-label="Wishlist statistics">
+      <div><strong id="wishlist-count">—</strong><span>Wishlists</span></div>
+      <div><strong id="wish-count">—</strong><span>Wishes</span></div>
+    </section>
+
+    <section class="toolbar">
+      <div>
+        <h2>🎅 Everyone’s Wishes</h2>
+        <p class="muted">All submitted wishlists appear here.</p>
+      </div>
+      <label class="search">
+        <span>🔍</span>
+        <input id="search" type="search" placeholder="Search names or wishes..." autocomplete="off">
+      </label>
+    </section>
+
+    <div id="status" class="status">Loading Christmas wishes…</div>
+    <section id="wishlist-grid" class="wishlist-grid"></section>
+  </main>
+
+  <footer>Made for Christmas 🎄 · <a href="admin.html">Admin</a></footer>
+  <script type="module" src="js/home.js"></script>
+</body>
+</html>

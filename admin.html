@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Wishlist Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Mountains+of+Christmas:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span>🎄</span> Wishlist Admin</a>
+    <nav><a class="nav-link secondary-link" href="index.html">← Public Site</a></nav>
+  </header>
+
+  <main class="container admin-container">
+    <section id="login-panel" class="admin-login">
+      <p class="eyebrow">🔐 Private area</p>
+      <h1>Admin</h1>
+      <p class="muted">Sign in to edit or remove submitted wishlists.</p>
+      <form id="login-form" class="wishlist-form compact">
+        <div class="form-card">
+          <label>Email</label>
+          <input id="email" type="email" required autocomplete="username">
+          <label>Password</label>
+          <input id="password" type="password" required autocomplete="current-password">
+        </div>
+        <p id="login-error" class="form-error" role="alert"></p>
+        <button class="button primary" type="submit">Sign in</button>
+      </form>
+    </section>
+
+    <section id="admin-panel" class="hidden">
+      <div class="admin-heading">
+        <div>
+          <p class="eyebrow">🎅 Santa’s desk</p>
+          <h1>Manage Wishlists</h1>
+        </div>
+        <button id="logout" class="button ghost">Sign out</button>
+      </div>
+      <p id="admin-status" class="status">Loading…</p>
+      <div id="admin-list" class="admin-list"></div>
+    </section>
+  </main>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

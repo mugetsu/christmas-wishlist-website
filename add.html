@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Add Your Wishlist 🎁</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Mountains+of+Christmas:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="snow" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span>🎄</span> Christmas Wishlist</a>
+    <nav><a class="nav-link secondary-link" href="index.html">← Everyone’s Wishes</a></nav>
+  </header>
+
+  <main class="container narrow">
+    <section class="form-hero">
+      <p class="eyebrow">🎁 Dear Santa…</p>
+      <h1>Create Your Wishlist</h1>
+      <p class="hero-copy">Add up to three things you’d love to receive this Christmas.</p>
+    </section>
+
+    <form id="wishlist-form" class="wishlist-form">
+      <div class="form-card">
+        <label for="person-name">Your name <span class="required">*</span></label>
+        <input id="person-name" name="name" maxlength="80" required placeholder="e.g. Randell">
+      </div>
+
+      <div id="wish-fields"></div>
+
+      <button type="button" id="add-wish" class="button ghost">＋ Add another wish</button>
+      <p id="form-error" class="form-error" role="alert"></p>
+
+      <button class="button primary submit-button" type="submit">🎄 Save My Wishlist</button>
+    </form>
+
+    <section id="success" class="success-card hidden">
+      <div class="success-icon">🎉</div>
+      <h2>Wishlist saved!</h2>
+      <p>Your Christmas wishes are now on the list.</p>
+      <div class="success-actions">
+        <a id="view-link" class="button primary" href="index.html">View Everyone’s Wishes</a>
+        <button id="copy-link" class="button ghost" type="button">📋 Copy My Wishlist Link</button>
+      </div>
+      <p id="copy-status" class="muted"></p>
+    </section>
+  </main>
+  <script type="module" src="js/add.js"></script>
+</body>
+</html>
