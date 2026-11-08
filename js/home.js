@@ -11,6 +11,29 @@ let wishlists = [];
 const escapeHtml = (value = "") =>
   value.replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;" }[c]));
 
+function formatDescription(value = "") {
+  const urlPattern = /(https?:\/\/[^\s]+)/g;
+
+  return value.split(urlPattern).map(part => {
+    if (!/^https?:\/\//i.test(part)) return escapeHtml(part);
+
+    const cleanUrl = part.replace(/[),.!?;:]+$/, "");
+    const trailing = part.slice(cleanUrl.length);
+
+    try {
+      const parsed = new URL(cleanUrl);
+
+      if (!["http:", "https:"].includes(parsed.protocol)) {
+        return escapeHtml(part);
+      }
+
+      return `<a href="${escapeHtml(parsed.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(cleanUrl)}</a>${escapeHtml(trailing)}`;
+    } catch {
+      return escapeHtml(part);
+    }
+  }).join("");
+}
+
 function render() {
   const q = search.value.trim().toLowerCase();
   const filtered = wishlists.filter(w =>
@@ -28,7 +51,7 @@ function render() {
             <span class="wish-number">${i + 1}</span>
             <div>
               <strong>${escapeHtml(x.name)}</strong>
-              ${x.description ? `<p>${escapeHtml(x.description)}</p>` : ""}
+              ${x.description ? `<div class="wish-description"><p>${formatDescription(x.description)}</p><button class="copy-description" type="button" data-copy-description="${escapeHtml(x.description)}" aria-label="Copy description">Copy</button></div>` : ""}
             </div>
           </div>`).join("")}
       </div>
@@ -62,4 +85,23 @@ async function load() {
 }
 
 search.addEventListener("input", render);
+
+grid.addEventListener("click", async event => {
+  const button = event.target.closest(".copy-description");
+  if (!button) return;
+
+  const originalLabel = button.textContent;
+
+  try {
+    await navigator.clipboard.writeText(button.dataset.copyDescription || "");
+    button.textContent = "Copied!";
+  } catch {
+    button.textContent = "Copy failed";
+  }
+
+  window.setTimeout(() => {
+    button.textContent = originalLabel;
+  }, 1600);
+});
+
 load();
